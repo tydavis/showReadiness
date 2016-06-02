@@ -1,0 +1,25 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "imR2wF388/0fBU6RRWx8RvTi8Q8=",
+			"path": "github.com/facebookgo/clock",
+			"revision": "600d898af40aa09a7a93ecb9265d87b0504b6f03",
+			"revisionTime": "2015-04-10T01:09:13Z"
+		},
+		{
+			"checksumSHA1": "8SgB/r3Cf+OvXmg8bIPnlEq03Bs=",
+			"path": "github.com/facebookgo/httpdown",
+			"revision": "a3b1354551a26449fbe05f5d855937f6e7acbd71",
+			"revisionTime": "2016-03-23T22:10:27Z"
+		},
+		{
+			"checksumSHA1": "SzXvrWxavFo8HD/2hnbdu17C3VE=",
+			"path": "github.com/facebookgo/stats",
+			"revision": "1b76add642e42c6ffba7211ad7b3939ce654526e",
+			"revisionTime": "2015-10-06T22:16:25Z"
+		}
+	],
+	"rootPath": "github.com/tydavis/showreadiness"
+}
