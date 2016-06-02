@@ -9,8 +9,8 @@ spec:
   sessionAffinity: None
   ports:
   - name: showreadiness
-    port: 6080 # External Port
-    targetPort: 80 # Port inside the service 
+    port: 80 # Internal Port
+    targetPort: 6080 # External port
     protocol: TCP 
   selector:
     app: showreadiness
