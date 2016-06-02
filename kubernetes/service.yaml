@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: showreadiness
+  labels:
+    app: showreadiness
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+  ports:
+  - name: showreadiness
+    port: 6080 # External Port
+    targetPort: 80 # Port inside the service 
+    protocol: TCP 
+  selector:
+    app: showreadiness

@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: showreadiness
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: showreadiness
+    spec:
+      containers:
+      - name: showreadiness
+        image: showreadiness:1 #Your Repo Here
+        livenessProbe:
+            httpGet:
+                path: /ping
+                port: 80
+                scheme: HTTP
+            initialDelaySeconds: 15
+            timeoutSeconds: 2
+        readinessProbe:
+            httpGet:
+                path: /ready
+                port: 80
+                scheme: HTTP
+            initialDelaySeconds: 10
+            timeoutSeconds: 1              
+        resources:
+          requests:
+            memory: 16Mi
+          limits:
+            memory: 16Mi
