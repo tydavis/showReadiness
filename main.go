@@ -36,12 +36,12 @@ func killMe(w http.ResponseWriter, r *http.Request) {
 
 func readinessCheck(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("responding-pod", hostname)
-	http.Error(w, "", ReadyValue)
+	http.Error(w, "Responding with ReadyValue", ReadyValue)
 }
 
 func livenessCheck(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("responding-pod", hostname)
-	http.Error(w, "", LiveValue)
+	http.Error(w, "Responding with LiveValue", LiveValue)
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
