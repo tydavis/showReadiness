@@ -3,7 +3,11 @@ kind: Deployment
 metadata:
   name: showreadiness
 spec:
+  revisionHistoryLimit: 5
   replicas: 3
+  selector:
+    matchLabels:
+      app: showreadiness
   template:
     metadata:
       labels:
