@@ -6,11 +6,12 @@ import (
 	"net/http"
 	"os"
 	"time"
-
-	"github.com/facebookgo/httpdown"
 )
 
+// ReadyValue indiciates the program is ready to receive traffic
 var ReadyValue = http.StatusOK
+
+// LiveValue indiciates the program is alive and should not be terminated
 var LiveValue = http.StatusOK
 var hostname string
 
@@ -53,8 +54,8 @@ func main() {
 	// Force log output to stdout for Docker
 	log.SetOutput(os.Stdout)
 
-	// Delay for startup
-	var delay time.Duration = (1 * time.Second)
+	// Configurable delay for startup
+	var delay = (1 * time.Second)
 	if os.Getenv("APPDELAY") != "" {
 		var err error
 		delay, err = time.ParseDuration(os.Getenv("APPDELAY"))
@@ -77,16 +78,13 @@ func main() {
 	mux.HandleFunc("/killMe", killMe)
 
 	server := &http.Server{
-		Addr:    ":80",
-		Handler: mux,
+		Addr:         ":80",
+		Handler:      mux,
+		ReadTimeout:  3 * time.Second,
+		WriteTimeout: 3 * time.Second,
 	}
 
-	hd := &httpdown.HTTP{
-		StopTimeout: 10 * time.Second,
-		KillTimeout: 1 * time.Second,
-	}
-
-	if err := httpdown.ListenAndServe(server, hd); err != nil {
+	if err := server.ListenAndServe(); err != nil {
 		log.Fatalln(err)
 	}
 
