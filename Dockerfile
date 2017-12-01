@@ -1,5 +1,5 @@
 FROM busybox:latest
-MAINTAINER Ty Davis <tydavis@gmail.com>
+LABEL maintainer="Tyler Davis <tydavis@gmail.com>"
 
 EXPOSE 80
 COPY showreadiness / 
